@@ -72,3 +72,5 @@ You should receive the following response:
 ```
 
 Are you ready to embark on this DevOps journey with us? 🚀 Best of luck with your assignment! 🌟
+
+Docker Image size after being optimized: 198MB
