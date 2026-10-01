@@ -8,6 +8,10 @@ RUN npm ci --omit=dev
 FROM node:20-alpine AS runner
 WORKDIR /app
 
+# Upgrade OS packages to apply security patches and remove unused global package managers
+RUN apk upgrade --no-cache && \
+    rm -rf /usr/local/lib/node_modules /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack /usr/local/bin/yarn* /opt/yarn*
+
 ENV NODE_ENV=production \
     PORT=3000
 
@@ -24,3 +28,4 @@ COPY --chown=node:node src/routes ./routes
 EXPOSE 3000
 
 CMD ["node", "index.js"]
+
